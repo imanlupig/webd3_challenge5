@@ -30,14 +30,14 @@ products = CSV.parse(csv_data, headers: true)
 
 products.each do |row|
   # Find or create the category
-  category_name = row['name']
+  category_name = row['category']
   category = Category.find_or_create_by(name: category_name)
 
   # Create the product
   category.products.create(
-    title: row['title'],
+    title: row['name'],  # "name" in CSV corresponds to "title" in Product model
     description: row['description'],
     price: row['price'],
-    stock_quantity: row['stock_quantity']
+    stock_quantity: row['stock quantity']  # Be sure to match the exact column name
   )
 end

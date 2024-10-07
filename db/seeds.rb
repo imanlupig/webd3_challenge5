@@ -23,7 +23,7 @@ Product.destroy_all
 Category.destroy_all
 
 # Load data from CSV file
-csv_file = Rails.root.join('db', 'products.csv')
+csv_file = Rails.root.join('db/products.csv')
 csv_data = File.read(csv_file)
 
 products = CSV.parse(csv_data, headers: true)
@@ -35,9 +35,9 @@ products.each do |row|
 
   # Create the product
   category.products.create(
-    title: row['name'],  # "name" in CSV corresponds to "title" in Product model
+    title: row['name'],
     description: row['description'],
     price: row['price'],
-    stock_quantity: row['stock quantity']  # Be sure to match the exact column name
+    stock_quantity: row['stock quantity']
   )
 end
